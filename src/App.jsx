@@ -28,7 +28,7 @@ function App() {
         <div className="drawer-content flex flex-col">
             <Navbar />
             <Header name={path}/>
-            <div className="hero bg-base-200 min-h-screen p-3 max-w-[98%] rounded-3xl self-center flex flex-wrap gap-4 justify-start  mb-20 ">
+            <div className="hero bg-base-200 min-h-screen px-3 py-10 max-w-[94%] rounded-lg self-center flex flex-wrap gap-4 justify-evenly items-center mb-20 ">
               <Router  />
             </div>
         </div>
@@ -39,7 +39,6 @@ function App() {
             <h2 className="font-bold text-2xl mb-5">My Tambak Udang</h2>
             <li><Link to="/" onClick={CloseDrawerHandler}>Home</Link></li>
             <li><Link to="/AboutMe" onClick={CloseDrawerHandler}>About Me</Link></li>
-            <li><Link to="/Details" onClick={CloseDrawerHandler}>Details</Link></li>
           </ul>
         </div>
       </div>

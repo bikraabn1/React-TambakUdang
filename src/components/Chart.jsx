@@ -3,8 +3,8 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 export default function Chart(props) {
     return (
         <>
-            <div className="card bg-base-100 w-96 shadow-xl">
-                <div className="card-body">
+            <div className="card bg-base-100 w-[48%] shadow-xl rounded-md">
+                <div className="card-body ">
                     <ResponsiveContainer width="100%" height={300}>
                         <LineChart data={props.data} margin={{
                             top: 5,
@@ -13,10 +13,10 @@ export default function Chart(props) {
                             bottom: 5,
                         }}>
                             <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="index" />
+                            <XAxis />
                             <YAxis />
                             <Tooltip />
-                            <Line type="monotone" dataKey={props.dataKey} stroke='#F5004F' />
+                            <Line type="monotone" dataKey={props.dataKey} stroke={props.color} />
                         </LineChart>
                     </ResponsiveContainer>
 

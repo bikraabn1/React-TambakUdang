@@ -3,7 +3,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 export default function Chart(props) {
     return (
         <>
-            <div className="card bg-base-100 w-[48%] shadow-xl rounded-md">
+            <div className="card bg-base-100 w-[48%] shadow-xl rounded-md" onClick = {props.onClick}>
                 <div className="card-body ">
                     <ResponsiveContainer width="100%" height={300}>
                         <LineChart data={props.data} margin={{

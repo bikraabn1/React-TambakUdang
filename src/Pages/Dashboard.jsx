@@ -1,76 +1,20 @@
-import { Link,useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Chart from '../components/Chart';
-import React from 'react';
-
-
+import { useEffect, useState } from 'react';
+import  axios  from 'axios';
 
 export default function Dashboard() {
   const navigate = useNavigate()
+  
+  useEffect(()=>{
+    axios.get('/dataDummy.json')
+      .then(response => setDataDummy(response.data))
+      .catch(err => console.error('Error fetching data',err))
+  },[])
 
-  const dataDummy = [
-    { 
-      "do": 6.5, 
-      "ph": 7.2, 
-      "temperature": 28.5, 
-      "turbidity": 10.0 
-    },
-    { 
-      "do": 7.0, 
-      "ph": 7.4, 
-      "temperature": 27.8, 
-      "turbidity": 12.0 
-    },
-    { 
-      "do": 6.8, 
-      "ph": 7.0, 
-      "temperature": 29.0, 
-      "turbidity": 11.5 
-    },
-    { 
-      "do": 7.2, 
-      "ph": 7.6, 
-      "temperature": 28.0, 
-      "turbidity": 9.8 }
-      ,
-    { 
-      "do": 6.9, 
-      "ph": 7.3, 
-      "temperature": 27.5, 
-      "turbidity": 10.5 
-    },
-    { 
-      "do": 6.7, 
-      "ph": 7.1, 
-      "temperature": 28.3, 
-      "turbidity": 10.2 
-    },
-    { 
-      "do": 7.1, 
-      "ph": 7.5, 
-      "temperature": 28.7, 
-      "turbidity": 11.0 
-    },
-    { 
-      "do": 6.6, 
-      "ph": 7.2, 
-      "temperature": 27.9, 
-      "turbidity": 10.7 
-    },
-    { 
-      "do": 6.9, 
-      "ph": 7.4, 
-      "temperature": 28.1, 
-      "turbidity": 9.5 }
-      ,
-    { 
-      "do": 7.0, 
-      "ph": 7.3, 
-      "temperature": 28.6, 
-      "turbidity": 10.8 
-    }
-  ];
-
-  const dataNames = Object.keys(dataDummy[0])
+  const [dataDummy, setDataDummy] = useState([])
+  
+  const dataNames = dataDummy.length > 0 ? Object.keys(dataDummy[0]) : []
 
   const strokeColors = {
     "do" : "#F5004F",
@@ -87,21 +31,22 @@ export default function Dashboard() {
     }
   ))
 
+  const navigateHandler = (name, data, color) =>{
+    navigate('/Details', {state : {name, data, color}})
+  }
+
   return (
     <>
-      
-      {dataNames.map((name) => (
-        <div key={name} onClick={()=> navigate('/Details')}>
+      {dataDummy.length > 0 && dataNames.map((name) => (
           <Chart  
             key={name}
             name={name}
             data={dataWithIndex}  
             dataKey={name}
             color={strokeColors[name]}
+            onClick ={() => navigateHandler(name, dataWithIndex, strokeColors[name])}
           />
-        </div>
       ))}
-      {dataWithIndex.map((data)=>console.log(data))}
     </>
   )
 }

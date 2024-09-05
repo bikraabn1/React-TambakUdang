@@ -1,8 +1,22 @@
-export default function Details(props){
+import Chart from "../components/Chart"
+import { useLocation } from 'react-router-dom'
 
-    return(
+export default function Details() {
+    const location = useLocation()
+    const { name, data ,color} = location.state || {}
+
+    return (
         <>
-            <h1>Ini Details</h1>
+            { name && data ? (
+                <Chart
+                    name={name}
+                    data={data}
+                    dataKey={name}
+                    color={color}  
+                />
+            ) : (
+                <p>No data available</p>
+            )}
         </>
     )
 }

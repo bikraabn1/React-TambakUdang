@@ -28,7 +28,7 @@ function App() {
         <div className="drawer-content flex flex-col">
             <Navbar />
             <Header name={path}/>
-            <div className="hero bg-base-200 min-h-screen px-3 py-10 max-w-[94%] rounded-lg self-center flex flex-wrap gap-4 justify-evenly items-center mb-20 ">
+            <div className="hero min-h-screen px-3 my-6 max-w-[94%] rounded-lg self-center flex flex-wrap gap-4 justify-evenly items-center mb-20 ">
               <Router  />
             </div>
         </div>

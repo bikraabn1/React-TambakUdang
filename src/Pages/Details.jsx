@@ -13,6 +13,8 @@ export default function Details() {
                     data={data}
                     dataKey={name}
                     color={color}  
+                    width="90%"
+                    height={400}
                 />
             ) : (
                 <p>No data available</p>

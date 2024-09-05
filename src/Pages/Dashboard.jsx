@@ -45,6 +45,8 @@ export default function Dashboard() {
             dataKey={name}
             color={strokeColors[name]}
             onClick ={() => navigateHandler(name, dataWithIndex, strokeColors[name])}
+            width="48%"
+            height={300}
           />
       ))}
     </>

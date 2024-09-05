@@ -3,9 +3,9 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 export default function Chart(props) {
     return (
         <>
-            <div className="card bg-base-100 w-[48%] shadow-xl rounded-md" onClick = {props.onClick}>
+            <div className="card bg-base-100 shadow shadow-slate-300 rounded-md self-start" onClick = {props.onClick} style={{width : props.width}}>
                 <div className="card-body ">
-                    <ResponsiveContainer width="100%" height={300}>
+                    <ResponsiveContainer width="100%" height={props.height}>
                         <LineChart data={props.data} margin={{
                             top: 5,
                             right: 30,

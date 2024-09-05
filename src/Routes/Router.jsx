@@ -11,7 +11,7 @@ export default function Router(){
               <Route  path="/" element={<Dashboard />}/>
               <Route  path="/AboutMe" element={<AboutMe />}/>
               <Route  path="/Details" element={<Details />}/>
-              <Route  path="/Table" element={<Tables  />}/>
+              <Route  path="/Tables" element={<Tables  />}/>
             </Routes>
         </>
     )

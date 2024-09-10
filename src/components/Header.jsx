@@ -9,6 +9,8 @@ export default function Header(props){
                 <h2>Home</h2>  :
                 <h2>{formattedName}</h2>
             }
+
+            <h2>{Date.now()}</h2>
         </div>
     )
 }

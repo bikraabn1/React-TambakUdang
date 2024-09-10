@@ -1,9 +1,10 @@
 import "./index.css"
 import Navbar from "./components/Navbar"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import {  useLocation, Link } from "react-router-dom" 
 import Header from "./components/Header"
 import Router from "./Routes/Router"
+
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
         <div className="drawer-content flex flex-col">
             <Navbar />
             <Header name={path}/>
+            { location.pathname === "/Details" && <p className="text-primary self-start underline underline-offset-4 ps-11"><Link to={"/"}>Back</Link></p> }
             <div className="hero min-h-screen px-3 my-6 max-w-[94%] rounded-lg self-center flex flex-wrap gap-4 justify-evenly items-center mb-20 ">
               <Router  />
             </div>
@@ -39,6 +41,7 @@ function App() {
             <h2 className="font-bold text-2xl mb-5">My Tambak Udang</h2>
             <li><Link to="/" onClick={CloseDrawerHandler}>Home</Link></li>
             <li><Link to="/AboutMe" onClick={CloseDrawerHandler}>About Me</Link></li>
+            <li><Link to="/Tables" onClick={CloseDrawerHandler}></Link></li>
           </ul>
         </div>
       </div>

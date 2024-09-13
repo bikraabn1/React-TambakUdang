@@ -17,7 +17,7 @@ export default function Chart(props) {
                             bottom: 5,
                         }}>
                             <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis />
+                            <XAxis  dataKey={props.Xkey}/>
                             <YAxis />
                             <Tooltip />
                             <ReferenceLine y={props.normalLine} stroke="green" label="Normal" />

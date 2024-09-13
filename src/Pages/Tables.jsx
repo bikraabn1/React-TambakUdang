@@ -14,6 +14,7 @@ export default function Tables() {
                             <th>potential of Hydrogen (pH)</th>
                             <th>Temperature</th>
                             <th>Turbidity</th>
+                            <th>Time</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,6 +26,7 @@ export default function Tables() {
                                         <td>{data.ph}</td>
                                         <td>{data.turbidity}</td>
                                         <td>{data.temperature}</td>
+                                        <td>{data.timestamp}</td>
                                     </tr>
                                 )
                             })

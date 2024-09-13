@@ -6,7 +6,7 @@ import { useContext } from 'react';
 export default function Dashboard() {
   const navigate = useNavigate()
 
-  const { data } = useContext(StateContext)
+  const { data, setData } = useContext(StateContext)
 
   const dataNames = data.length > 0 ? Object.keys(data[0]) : []
 
@@ -17,7 +17,15 @@ export default function Dashboard() {
     "turbidity": "#03A9F4"
   }
 
-  const dataWithIndex = data.map((item, index) => (
+  const dataWithTimeStamp = data.map((item) => {
+    if (!item.timestamp) {
+      let date = new Date()
+      item.timestamp = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}` ;
+    }
+    return item;
+  })
+
+  const dataWithIndex = dataWithTimeStamp.map((item, index) => (
     {
       ...item,
       id: index + 1,
@@ -25,8 +33,10 @@ export default function Dashboard() {
     }
   ))
 
+
   const navigateHandler = (name, data, color) =>{
-    navigate('/Details', {state : {name, data, color}})
+    navigate('/Details', {state : {name, data, color}}
+  )
   }
 
   return (
@@ -41,8 +51,10 @@ export default function Dashboard() {
           onClick={() => navigateHandler(name, dataWithIndex, strokeColors[name])}
           width="48%"
           height={300}
+          Xkey="timestamp"
         />
       ))}
+      {console.log(data)}
     </>
   )
 }
